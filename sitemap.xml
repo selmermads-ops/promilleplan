@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://promilleplan.dk/forside</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2026-07-09</lastmod>
+    <image:image>
+      <image:loc>https://images.squarespace-cdn.com/content/v1/6a412da65e159f7821be92b2/6f772c23-8ebd-4070-a0dd-66b4ba3a32bf/Billede1.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://promilleplan.dk/privatliv</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.75</priority>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://promilleplan.dk/vilkaar</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.75</priority>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://promilleplan.dk/support</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.75</priority>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  <url>
+    <loc>https://promilleplan.dk/slet-data</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.75</priority>
+    <lastmod>2026-07-09</lastmod>
+  </url>
+  </urlset>
+
