@@ -48,7 +48,11 @@ De gamle A-records er `198.49.23.144`, `198.49.23.145`, `198.185.159.144`, `198.
 
 **4. Slå HTTPS til** (Settings → Pages → Enforce HTTPS), når GitHub har udstedt certifikatet.
 
-**5. Først nu kan Squarespace opsiges.** Domænet ligger hos Simply.com og forsvinder ikke.
+**5. Kør `tools/tjek-domaene.sh`** – den tjekker DNS, at mailen er urørt, og at siden svarer fra GitHub. Slå HTTPS til med `tools/tjek-domaene.sh --slaa-https-til`.
+
+De gamle DNS-værdier er gemt i `DNS-FOER-FLYTNING.md`.
+
+**6. Først nu kan Squarespace opsiges.** Domænet ligger hos Simply.com og forsvinder ikke.
 Husk at domænet fornyes hos Simply.com (udløber 2027-07-05).
 
 ## Kend forskellene til Squarespace
