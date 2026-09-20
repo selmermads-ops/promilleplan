@@ -24,13 +24,32 @@ af Squarespaces servere. Alle stier er relative, så siden virker både på `<br
 
 ### Eget domæne (promilleplan.dk)
 
-Først når siden er testet på github.io-adressen:
+Domænet er registreret hos **Simply.com**, og DNS styres også dér (nameservere `ns1-3.simply.com`).
+E-mail (`support@promilleplan.dk`) kører via Google (MX + SPF) og **må ikke røres**.
 
-1. **Settings → Pages → Custom domain**: skriv `promilleplan.dk`. GitHub opretter filen `CNAME`.
-2. Ret DNS hos domæneudbyderen (fx A-records til GitHub Pages' IP-adresser). Se GitHubs guide *"Managing a custom domain for your GitHub Pages site"*.
-3. Slå **Enforce HTTPS** til, når GitHub har udstedt certifikatet.
+**1. Sæt domænet på GitHub Pages** (Settings → Pages → Custom domain → `promilleplan.dk`, eller
+`gh api -X PUT repos/selmermads-ops/promilleplan/pages -f cname=promilleplan.dk`).
 
-Domænet skal først flyttes, når du er klar til at slukke Squarespace – indtil da peger det stadig på den gamle side.
+**2. Ret DNS hos Simply.com** (Domæner → promilleplan.dk → DNS):
+
+| Type | Navn | Værdi | Handling |
+|---|---|---|---|
+| A | `@` (roden) | `185.199.108.153` | erstat de 4 Squarespace-A-records |
+| A | `@` | `185.199.109.153` | |
+| A | `@` | `185.199.110.153` | |
+| A | `@` | `185.199.111.153` | |
+| AAAA | `@` | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` | valgfri, tilføj |
+| CNAME | `www` | `selmermads-ops.github.io.` | erstat `ext-cust.squarespace.com.` |
+| MX / TXT | | | **lad stå uændret** (Google-mail) |
+
+De gamle A-records er `198.49.23.144`, `198.49.23.145`, `198.185.159.144`, `198.185.159.145`.
+
+**3. Vent på DNS** (typisk 5-60 min, op til et par timer), tjek med `dig +short promilleplan.dk`.
+
+**4. Slå HTTPS til** (Settings → Pages → Enforce HTTPS), når GitHub har udstedt certifikatet.
+
+**5. Først nu kan Squarespace opsiges.** Domænet ligger hos Simply.com og forsvinder ikke.
+Husk at domænet fornyes hos Simply.com (udløber 2027-07-05).
 
 ## Kend forskellene til Squarespace
 
