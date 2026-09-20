@@ -9,6 +9,7 @@ Bruges som sikkerhedskopi, hvis noget skal rulles tilbage.
 |---|---|---|
 | A | `@` | `198.49.23.144`, `198.49.23.145`, `198.185.159.144`, `198.185.159.145` |
 | CNAME | `www` | `ext-cust.squarespace.com.` |
+| CNAME | `lyxwbse5k9m24t8wws49` | `verify.squarespace.com` (Squarespaces domæne-bekræftelse; kan slettes efter opsigelsen) |
 
 ### Nye værdier
 
