@@ -13,6 +13,22 @@ const END = '<!-- pp-home:end -->';
 const THEME = '<meta name="theme-color" content="#061033" data-pp-home>';
 const pages = ['index.html', 'forside/index.html']; // / og /forside er samme side
 
+// Forsiden er ren HTML/CSS nu: fjern Squarespaces JavaScript (kontekst, runtime, komponenter, site-bundle, header-script),
+// men behold Google Analytics og strukturerede data (JSON-LD). Undersiderne rører vi ikke – de bruger komponent-JS (accordion).
+function stripSquarespaceScripts(html) {
+  const keep = (attrs, body) => /googletagmanager\.com/.test(attrs) || /\bgtag\(/.test(body) || /application\/ld\+json/.test(attrs);
+  html = html.replace(/<script\b([^>]*)>([\s\S]*?)<\/script>[ \t]*\n?/g, (m, attrs, body) => (keep(attrs, body) ? m : ''));
+  return html.replace(/<link\b[^>]*rel="(?:preconnect|dns-prefetch)"[^>]*squarespace[^>]*>[ \t]*\n?/g, '');
+}
+
+// Squarespace-skabelonen efterlader hundreder af kB indrykning. Komprimér lange blanktegn-løb – men aldrig inde i <pre>.
+function collapseWhitespace(html) {
+  return html
+    .split(/(<pre\b[\s\S]*?<\/pre>)/)
+    .map((part, i) => (i % 2 ? part : part.replace(/[ \t]{20,}/g, ' ').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n')))
+    .join('');
+}
+
 for (const page of pages) {
   const file = path.join(root, page);
   const up = '../'.repeat(page.split('/').length - 1);
@@ -40,6 +56,8 @@ for (const page of pages) {
     const dup = /<pre><code class="language-markdown">PromillePlan viser vejledende estimater[\s\S]*?<\/code><\/pre>/;
     html = html.slice(0, f) + html.slice(f).replace(dup, '');
   }
+  html = collapseWhitespace(stripSquarespaceScripts(html));
+
   fs.writeFileSync(file, html);
   console.log(`${page}: forside ${a !== -1 ? 'opdateret' : 'indsat'} (up="${up}", ${(html.length / 1024) | 0} kB)`);
 }

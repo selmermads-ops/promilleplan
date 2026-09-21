@@ -69,6 +69,11 @@ Forsidens indhold (hero med logo, "Aftenens overblik" og telefoner på vej-baggr
 (scriptet erstatter blokken i `index.html` og `forside/index.html`, den bliver ikke duplikeret). Header'en er skjult på forsiden,
 og sikkerhedsteksten i footeren er fjernet dér, fordi den står fremhævet i selve indholdet. Undersiderne er uændrede.
 
+**Uden Squarespace-scripts:** `apply-home.mjs` fjerner al Squarespace-JavaScript fra de to forsider (kun Google Analytics og
+strukturerede data bliver stående) og komprimerer overflødig indrykning. Forsiden hentes derfor uden kald til Squarespace, og
+siden er ca. 68 kB HTML. Undersiderne (privatliv m.fl.) bruger stadig Squarespaces komponent-JS til de foldbare afsnit.
+`node tools/fix-social-meta.mjs` sørger for, at delingsbilledet (`og:image` m.fl.) er en fuld adresse på alle sider.
+
 **Når appen udkommer:** gør de to `<li class="pp-store">` i skabelonen til `<a href="…">`-links til App Store og Google Play
 (og skift til Apples/Googles officielle knapper, se `originaler/README.md`). Fjern derefter "Kommer snart"-teksterne
 (hero-knapperne og afsnittet "PromillePlan kommer snart").
