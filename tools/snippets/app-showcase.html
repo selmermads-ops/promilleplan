@@ -1,0 +1,68 @@
+<!-- pp-showcase:start (indsat af tools/apply-showcase.mjs – ret skabelonen i tools/snippets/, ikke her) -->
+<section class="pp-showcase" aria-labelledby="pp-showcase-title">
+<style>
+.pp-showcase{--pp-navy:#0b1230;--pp-blue:#0a2a9c;--pp-muted:#4b5570;position:relative;isolation:isolate;overflow:hidden;padding:clamp(48px,8vw,96px) 16px clamp(56px,9vw,104px);text-align:center;font-family:var(--body-font-font-family,inherit);color:var(--pp-navy);background:linear-gradient(180deg,rgba(238,242,251,0) 0%,#eef2fb 55%,#e6ecfa 100%)}
+.pp-showcase::before{content:"";position:absolute;left:50%;top:38%;width:min(120vw,980px);aspect-ratio:1;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(10,42,156,.20),rgba(10,42,156,.06) 55%,rgba(10,42,156,0) 100%);z-index:-1;pointer-events:none}
+.pp-showcase__inner{max-width:1040px;margin:0 auto}
+.pp-eyebrow{margin:0 0 10px;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pp-blue)}
+.pp-showcase h2{margin:0 auto 14px;max-width:20ch;text-wrap:balance;font-family:var(--heading-font-font-family,inherit);font-size:clamp(1.65rem,5vw,2.6rem);line-height:1.12;font-weight:800;color:var(--pp-navy)}
+.pp-lede{margin:0 auto;max-width:46ch;font-size:clamp(.95rem,2.5vw,1.12rem);line-height:1.6;color:var(--pp-muted)}
+.pp-phones{--w:clamp(96px,27vw,250px);display:flex;justify-content:center;align-items:flex-start;gap:clamp(6px,2.2vw,28px);margin:clamp(32px,6vw,56px) auto 0}
+.pp-phone{margin:0;width:var(--w);flex:0 0 auto;transition:translate .5s cubic-bezier(.2,.7,.2,1),opacity .6s ease}
+.pp-screen{position:relative;aspect-ratio:1/2;overflow:hidden;background:var(--pp-navy);border:clamp(3px,.9vw,8px) solid var(--pp-navy);border-radius:clamp(15px,4.8vw,38px);box-shadow:0 34px 64px -22px rgba(11,18,48,.5),0 10px 22px rgba(11,18,48,.18),inset 0 0 0 1px rgba(255,255,255,.08);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.pp-screen::after{content:"";position:absolute;top:1.6%;left:50%;width:14%;height:1.3%;transform:translateX(-50%);border-radius:99px;background:var(--pp-navy);opacity:.9}
+.pp-screen img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.pp-phone--left{margin-top:clamp(14px,4vw,44px)}
+.pp-phone--left .pp-screen{transform:rotate(-5deg)}
+.pp-phone--right{margin-top:clamp(14px,4vw,44px)}
+.pp-phone--right .pp-screen{transform:rotate(5deg)}
+.pp-phone--center{width:calc(var(--w) * 1.1);z-index:2}
+.pp-phone figcaption{margin-top:clamp(10px,2vw,18px);font-size:clamp(.7rem,2.1vw,.95rem);font-weight:700;color:var(--pp-navy)}
+.pp-phone--left figcaption,.pp-phone--right figcaption{margin-top:clamp(14px,3vw,26px)}
+@media (hover:hover){.pp-phone:hover .pp-screen{transform:translateY(-6px) rotate(0)}}
+.pp-stores{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:clamp(30px,5vw,48px) 0 0;padding:0;list-style:none}
+.pp-store{display:flex;align-items:center;gap:12px;min-width:min(100%,212px);padding:10px 20px 10px 14px;text-align:left;background:#fff;border:1px solid #d9e0f2;border-radius:16px;box-shadow:0 8px 20px -10px rgba(11,18,48,.25);cursor:default}
+.pp-store img{display:block;width:34px;height:34px;flex:none}
+.pp-store small{display:block;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--pp-muted)}
+.pp-store strong{display:block;font-size:1.05rem;line-height:1.2;font-weight:800;color:var(--pp-navy)}
+.pp-note{margin:clamp(22px,4vw,32px) auto 0;max-width:56ch;font-size:.8rem;line-height:1.55;color:var(--pp-muted)}
+.pp-armed .pp-phone{opacity:0;translate:0 34px}
+.pp-armed.pp-in .pp-phone{opacity:1;translate:0 0}
+.pp-armed.pp-in .pp-phone--center{transition-delay:.05s}
+.pp-armed.pp-in .pp-phone--left{transition-delay:.18s}
+.pp-armed.pp-in .pp-phone--right{transition-delay:.3s}
+@media (prefers-reduced-motion:reduce){.pp-phone,.pp-screen{transition:none}.pp-armed .pp-phone{opacity:1;translate:0 0}}
+</style>
+<div class="pp-showcase__inner">
+  <p class="pp-eyebrow">Et kig ind i appen</p>
+  <h2 id="pp-showcase-title">Aftenens overblik, lige i lommen</h2>
+  <p class="pp-lede">Log dine drinks, følg kurven og se, hvornår estimatet topper og falder igen.</p>
+  <div class="pp-phones">
+    <figure class="pp-phone pp-phone--left">
+      <div class="pp-screen"><img src="{{up}}media/app-log.webp" width="540" height="1080" loading="lazy" decoding="async" alt="Skærmbillede fra PromillePlan: Log en drink – øl, vin, shot eller drink – med søgning i alkoholbiblioteket, klokkeslæt og volumen."></div>
+      <figcaption>Log en drink</figcaption>
+    </figure>
+    <figure class="pp-phone pp-phone--center">
+      <div class="pp-screen"><img src="{{up}}media/app-resultat.webp" width="540" height="1080" loading="lazy" decoding="async" alt="Skærmbillede fra PromillePlan: Resultat med retning, grænse på 0,5 promille og peak, samt en graf over det vejledende estimat over tid."></div>
+      <figcaption>Se kurven</figcaption>
+    </figure>
+    <figure class="pp-phone pp-phone--right">
+      <div class="pp-screen"><img src="{{up}}media/app-tidslinje.webp" width="540" height="1080" loading="lazy" decoding="async" alt="Skærmbillede fra PromillePlan: Tidslinje der viser hvornår estimatet passerer 0,5 promille, topper, og hvornår du omtrent er ædru igen."></div>
+      <figcaption>Følg tidslinjen</figcaption>
+    </figure>
+  </div>
+  <ul class="pp-stores" role="list">
+    <li class="pp-store"><img src="{{up}}media/ikon-app-store.webp" width="34" height="34" alt="" loading="lazy" decoding="async"><span><small>Kommer snart</small><strong>App Store</strong></span></li>
+    <li class="pp-store"><img src="{{up}}media/ikon-google-play.webp" width="34" height="34" alt="" loading="lazy" decoding="async"><span><small>Kommer snart</small><strong>Google Play</strong></span></li>
+  </ul>
+  <p class="pp-note">Skærmbillederne er eksempler. PromillePlan viser vejledende estimater baseret på dine indtastninger – aldrig en garanti for, at du er ædru eller lovligt kan køre.</p>
+</div>
+<script>
+(function(){var s=document.currentScript&&document.currentScript.parentNode;if(!s)return;
+if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+s.classList.add('pp-armed');
+var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){s.classList.add('pp-in');o.disconnect();}},{threshold:.18});o.observe(s);
+setTimeout(function(){s.classList.add('pp-in');},4000);})();
+</script>
+</section>
+<!-- pp-showcase:end -->

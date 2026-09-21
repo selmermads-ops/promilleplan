@@ -62,10 +62,20 @@ Husk at domænet fornyes hos Simply.com (udløber 2027-07-05).
 - `originaler/` er en sikkerhedskopi af billederne fra Squarespace (logo, baggrunde, store-ikoner, QR-pladsholder).
   Se `originaler/README.md` for bemærkninger – bl.a. at QR-koden er en pladsholder, og at Google Play-ikonet har skaktern i billedet.
 
+## "Et kig ind i appen" (skærmbilleder)
+
+Sektionen på forsiden (og `/forside`) med tre telefonrammer og "Kommer snart"-knapper er bygget i
+`tools/snippets/app-showcase.html`; billederne ligger i `media/`. Ret skabelonen og kør `node tools/apply-showcase.mjs`
+(scriptet erstatter sektionen, den bliver ikke duplikeret).
+
+**Når appen udkommer:** gør de to `<li class="pp-store">` i skabelonen til `<a href="…">`-links til App Store og Google Play
+(og skift til Apples/Googles officielle knapper, se `originaler/README.md`). Fjern derefter "Kommer snart"-teksten og
+overskriften "Kommer snart til App Store og Google Play" i selve forsiden.
+
 ## Kend forskellene til Squarespace
 
-- Siden er **statisk**: der er ingen redigering online. Ret i HTML-filerne (eller kør `tools/mirror.mjs` igen, hvis
-  du stadig redigerer i Squarespace – det overskriver alle filer og `assets/`).
+- Siden er **statisk**: der er ingen redigering online. HTML-filerne i roden (`index.html`, `forside/`, `privatliv/` osv.)
+  er kilden – ret dem direkte. Squarespace er opsagt, og `tools/arkiv/mirror.mjs` må ikke køres mere (se `tools/arkiv/README.md`).
 - Squarespaces egen statistik (`/api/census/RecordHit`) svarer 404 og gør ingenting. Det er ufarligt.
 - Google Analytics (`G-PR4M1K4M94`) er bevaret som på originalen. Fjern `gtag`-scriptet i `<head>`, hvis du ikke vil have det.
 - Cart-koden fra Squarespace følger med, men er inaktiv (siden har ingen webshop).
@@ -74,7 +84,7 @@ Husk at domænet fornyes hos Simply.com (udløber 2027-07-05).
 
 ```bash
 node tools/serve.mjs "$(pwd)" 4173   # lokal test på http://127.0.0.1:4173
-node tools/mirror.mjs "$(pwd)"       # hent siden fra Squarespace igen (kun hvis originalen ændres)
+node tools/apply-showcase.mjs        # sæt "Et kig ind i appen"-sektionen ind igen efter ændring af tools/snippets/app-showcase.html
 ```
 
 Test lokalt på `127.0.0.1`, ikke `localhost` – Squarespace-koden har en særregel for `localhost`.
