@@ -62,15 +62,16 @@ Husk at domænet fornyes hos Simply.com (udløber 2027-07-05).
 - `originaler/` er en sikkerhedskopi af billederne fra Squarespace (logo, baggrunde, store-ikoner, QR-pladsholder).
   Se `originaler/README.md` for bemærkninger – bl.a. at QR-koden er en pladsholder, og at Google Play-ikonet har skaktern i billedet.
 
-## "Et kig ind i appen" (skærmbilleder)
+## Forsiden
 
-Sektionen på forsiden (og `/forside`) med tre telefonrammer og "Kommer snart"-knapper er bygget i
-`tools/snippets/app-showcase.html`; billederne ligger i `media/`. Ret skabelonen og kør `node tools/apply-showcase.mjs`
-(scriptet erstatter sektionen, den bliver ikke duplikeret).
+Forsidens indhold (hero med logo, "Aftenens overblik" og telefoner på vej-baggrunden, kort, sikkerhedstekst) er bygget i
+`tools/snippets/home.html`; billederne ligger i `media/`. Ret skabelonen og kør `node tools/apply-home.mjs`
+(scriptet erstatter blokken i `index.html` og `forside/index.html`, den bliver ikke duplikeret). Header'en er skjult på forsiden,
+og sikkerhedsteksten i footeren er fjernet dér, fordi den står fremhævet i selve indholdet. Undersiderne er uændrede.
 
 **Når appen udkommer:** gør de to `<li class="pp-store">` i skabelonen til `<a href="…">`-links til App Store og Google Play
-(og skift til Apples/Googles officielle knapper, se `originaler/README.md`). Fjern derefter "Kommer snart"-teksten og
-overskriften "Kommer snart til App Store og Google Play" i selve forsiden.
+(og skift til Apples/Googles officielle knapper, se `originaler/README.md`). Fjern derefter "Kommer snart"-teksterne
+(hero-knapperne og afsnittet "PromillePlan kommer snart").
 
 ## Kend forskellene til Squarespace
 
@@ -84,7 +85,7 @@ overskriften "Kommer snart til App Store og Google Play" i selve forsiden.
 
 ```bash
 node tools/serve.mjs "$(pwd)" 4173   # lokal test på http://127.0.0.1:4173
-node tools/apply-showcase.mjs        # sæt "Et kig ind i appen"-sektionen ind igen efter ændring af tools/snippets/app-showcase.html
+node tools/apply-home.mjs            # byg forsiden igen efter ændring af tools/snippets/home.html
 ```
 
 Test lokalt på `127.0.0.1`, ikke `localhost` – Squarespace-koden har en særregel for `localhost`.
