@@ -55,6 +55,13 @@ De gamle DNS-værdier er gemt i `DNS-FOER-FLYTNING.md`.
 **6. Først nu kan Squarespace opsiges.** Domænet ligger hos Simply.com og forsvinder ikke.
 Husk at domænet fornyes hos Simply.com (udløber 2027-07-05).
 
+## Ikoner og originale billeder
+
+- `favicon.ico`, `favicon-32.png` og `apple-touch-icon.png` er lavet ud fra app-ikonet (`originaler/logo-app-ikon-1254.webp`).
+  Squarespaces egen favicon var en stor JPEG (1536×1024) med `.ico`-endelse og blev udskiftet med disse.
+- `originaler/` er en sikkerhedskopi af billederne fra Squarespace (logo, baggrunde, store-ikoner, QR-pladsholder).
+  Se `originaler/README.md` for bemærkninger – bl.a. at QR-koden er en pladsholder, og at Google Play-ikonet har skaktern i billedet.
+
 ## Kend forskellene til Squarespace
 
 - Siden er **statisk**: der er ingen redigering online. Ret i HTML-filerne (eller kør `tools/mirror.mjs` igen, hvis

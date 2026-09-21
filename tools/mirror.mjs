@@ -113,6 +113,14 @@ function patchJs(js) {
   return js.replace(PP, '.p=(document.currentScript&&document.currentScript.src?document.currentScript.src.replace(/[^\\/]*$/,""):"https://assets.squarespace.com/universal/scripts-compressed/")');
 }
 
+// Squarespace's favicon is a 1536x1024 JPEG named .ico; use our own icon set (favicon.ico, favicon-32.png, apple-touch-icon.png) instead
+function patchIcons(html, outFile) {
+  const up = '../'.repeat(outFile.split('/').length - 1);
+  const block = `<link rel="icon" href="${up}favicon.ico" sizes="any">\n<link rel="icon" type="image/png" sizes="32x32" href="${up}favicon-32.png">\n<link rel="apple-touch-icon" href="${up}apple-touch-icon.png">\n`;
+  let first = true;
+  return html.replace(/<link rel="icon"[^>]*favicon\.ico"\s*\/?>\s*/g, () => (first ? ((first = false), block) : ''));
+}
+
 function write(file, data) {
   const dest = path.join(OUT, file);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
@@ -128,6 +136,7 @@ async function main() {
     const { buf } = await get(ORIGIN + r);
     let html = buf.toString('utf8');
     const file = routeFile(r);
+    html = patchIcons(html, file);
     html = rewrite(html, file, queue);
     // internal absolute links -> relative (works under any base path)
     const depth = file.split('/').length - 1;
